@@ -131,7 +131,7 @@ export const FetchingDataTest = () => {
       <Container>
         <Row className="justify-content-md-center">
           <Col lg={8} md={7}>
-            <h1>FetchingDataTest</h1>
+            <h1>Post Recent Project</h1>
             <Form.Group>
               <Form.Control
                 as="textarea"

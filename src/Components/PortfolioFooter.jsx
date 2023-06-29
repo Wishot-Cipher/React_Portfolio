@@ -35,7 +35,7 @@ export const Footer = () => {
           <footer id="footer">
                 <div className="container">
                 <div className="copyright">
-                    &copy; <Link to={"/posts"}><b> 2023 Wishot.</b>. </Link> All Rights Reserved..
+                    &copy; <Link to={"/posts"}><b> 2023 Wishot.</b>. </Link> All Rights Reserved <b><Link to={"/login"}> .. </Link></b>
                 </div>
                 </div>
       </footer>  {/* <!-- End  Footer --> */}

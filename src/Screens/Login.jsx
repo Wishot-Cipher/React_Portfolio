@@ -86,10 +86,10 @@ export const Login = () => {
       <section className="breadcrumbs">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-            <h2>Login</h2>
+          <Link to={"/register"}><h2>Login </h2>  </Link>
             <ol>
               <li><Link to={"/"}> Home </Link></li>
-              <li>Login</li>
+              <li> Login </li>
             </ol>
           </div>
         </div>
