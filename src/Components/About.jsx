@@ -40,7 +40,7 @@ export const About = () => {
                     <div className="count-box">
                         <i><FontAwesomeIcon icon={faClock}/></i>
                         <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" className="purecounter"  > 2<b>+</b></span>
-                        <p><strong>Years of experience</strong>  using python(flask) and fastApi.</p>
+                        <p><strong>Years of experience</strong>  working with the web.</p>
                     </div>
                     </div>
 
