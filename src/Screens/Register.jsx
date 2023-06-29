@@ -68,7 +68,8 @@ export const Register = () => {
             <h2>Portfolio Details</h2>
             <ol>
               <li>
-                <Link to="/">Home</Link>
+              <li>
+                <Link to={"/"}> Home </Link></li>
               </li>
               <li>Portfolio Details</li>
             </ol>

@@ -88,7 +88,7 @@ export const Login = () => {
           <div className="d-flex justify-content-between align-items-center">
             <h2>Login</h2>
             <ol>
-              <li><Link> Home </Link></li>
+              <li><Link to={"/"}> Home </Link></li>
               <li>Login</li>
             </ol>
           </div>
