@@ -8,7 +8,7 @@ import { PortfolioProjects } from '../Components/PortfolioProjects'
 import { OurServices } from '../Components/OurServices'
 import { Testimonials } from '../Components/Testimonials'
 import { PortfolioContact } from '../Components/PortfolioContact'
-import { Footer } from '../Components/footer'
+import { Footer } from '../Components/PortfolioFooter'
 
 export const Home = () => {
   return (
