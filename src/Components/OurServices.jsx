@@ -58,7 +58,7 @@ export const OurServices = () => {
                    <div className="round"> <p><FontAwesomeIcon icon={faChalkboardTeacher}/> </p> </div>
                    <h4 className="title"><a href="#contact">Tutoring</a></h4>
                    <p>
-                   Expert tutoring in programming languages to help you build a strong foundation in coding. Subject offered: <b>Html, Css, JavaScript, Python,</b> & more. 
+                   Expert tutoring in programming languages to help you build a strong foundation in coding. Subject offered: <b>Html, Css, JavaScript, Python,</b> etc.. 
                    </p>
             </div>
             <div className="card card3">
@@ -74,7 +74,7 @@ export const OurServices = () => {
                    <div className="round"> <p> <FontAwesomeIcon icon={faRobot}/> </p> </div>
                    <h4 className="title"><a href="#contact"> Telegram Airdrop bots</a></h4>
                    <p>
-                    We designs Telegram Airdrop Bots with user-friendly interface to streamline your crytocurrency airdrop campaigns and also tracks participant engagement.
+                    We designs Telegram Airdrop Bots with user-friendly interface to streamline your crytocurrency airdrop campaigns & also tracks participant engagement.
                    </p>
             </div>
          </Slider>
