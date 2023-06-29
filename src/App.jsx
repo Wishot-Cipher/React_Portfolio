@@ -8,7 +8,7 @@ import { Register } from './Screens/Register'
 // import { UserDetails } from './Screens/UserDetails'
 import { Home } from './Screens/Home'
 import { FetchingDataTest } from './Screens/PostProject'
-import { ProjectDetails } from './Screens/projectDetails'
+import { ProjectDetails } from "./Screens/Details"
 
 
 
