@@ -6,7 +6,7 @@ import { db } from '../config/firebase';
 import { css } from '@emotion/react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
- const ProjectDetails = () => {
+ export const Details = () => {
   const { projectId } = useParams();
   const [project, setProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -135,5 +135,5 @@ import ClipLoader from 'react-spinners/ClipLoader';
     </div>
   )
 }
-export default ProjectDetails;
+
 

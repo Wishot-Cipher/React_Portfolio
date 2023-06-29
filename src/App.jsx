@@ -8,7 +8,7 @@ import { Register } from './Screens/Register'
 // import { UserDetails } from './Screens/UserDetails'
 import { Home } from './Screens/Home'
 import { FetchingDataTest } from './Screens/PostProject'
-import { ProjectDetails } from "./Screens/Details"
+import { Details } from './Screens/Details';
 
 
 
@@ -22,7 +22,7 @@ export const App = () =>
       <Route path='login' element={ <Login />} />
       <Route path='register' element={ <Register />} />
       <Route path='posts' element={ <FetchingDataTest />} />
-      <Route path='/Projects/:projectId' element={ <ProjectDetails />} />
+      <Route path='/Projects/:projectId' element={ <Details />} />
     </Routes>
     </>
   )
