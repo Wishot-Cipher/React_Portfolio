@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { collection, doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
