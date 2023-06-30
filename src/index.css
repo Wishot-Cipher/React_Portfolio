@@ -925,6 +925,10 @@ section {
 .portfolio-details .portfolio-description p {
   padding: 0;
 }
+.portfolio-description b{
+  color: var(--MostUsedcolor);
+  
+}
 
 /*--------------------------------------------------------------
 # Back to top button

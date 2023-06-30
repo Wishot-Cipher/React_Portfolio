@@ -34,7 +34,7 @@ export const PortfolioNav = () => {
       <div className='header'>
         <div className='largeSc'>
             <div className='logo'>
-              <img src={logo1} height={50} alt='logo' /><h2>Whishot</h2>
+              <img src={logo1} height={50} alt='logo' /><h2>Wishot</h2>
             </div>
           <div className='showmenu' onClick={showMenu}> 
             <FontAwesomeIcon icon={faBarsStaggered} />
@@ -42,10 +42,10 @@ export const PortfolioNav = () => {
         </div>
         <nav className={active ? 'slider active' : 'slider'} ref={ref}>
           <div className='logoLx'>
-          <img src={logo1} height={50} alt='logo' className='LogoImg' /><h2>Whishot</h2>
+          <img src={logo1} height={50} alt='logo' className='LogoImg' /><h2>Wishot</h2>
           </div>
           <ul>
-            <li className='menu'> <div className="logo"><img src={logo1} height={40} alt="logo"/> <h2>Whishot</h2></div> </li>
+            <li className='menu'> <div className="logo"><img src={logo1} height={40} alt="logo"/> <h2>Wishot</h2></div> </li>
               <ScrollLink
                 // activeClass='activate'
                 onSetActive={() => setActiveLiLink("hero")}

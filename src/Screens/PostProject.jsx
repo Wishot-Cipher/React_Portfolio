@@ -11,7 +11,8 @@ export const FetchingDataTest = () => {
   // project form state
   const [newProject, setNewProject] = useState({
     title: '',
-    body: '',
+    introBody: '',
+    concludeBody: '',
     section: 'app',
     name: '',
     images: [],
@@ -92,7 +93,8 @@ export const FetchingDataTest = () => {
       // Clear the input fields
       setNewProject({
         title: '',
-        body: '',
+        introBody: '',
+        concludeBody: '',
         section: 'app',
         name: '',
         images: [],
@@ -136,11 +138,23 @@ export const FetchingDataTest = () => {
               <Form.Control
                 as="textarea"
                 name="ProjectBody"
-                rows={10}
-                placeholder="Project Body"
+                rows={8}
+                placeholder="Project Introduction.."
                 className="mt-3"
-                value={newProject.body}
-                onChange={(e) => setNewProject((prevState) => ({ ...prevState, body: e.target.value }))}
+                value={newProject.introBody}
+                onChange={(e) => setNewProject((prevState) => ({ ...prevState, introBody: e.target.value }))}
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Control
+                as="textarea"
+                name="ProjectBody"
+                rows={8}
+                placeholder="Project Conclusion.."
+                className="mt-3"
+                value={newProject.concludeBody}
+                onChange={(e) => setNewProject((prevState) => ({ ...prevState, concludeBody: e.target.value }))}
               />
             </Form.Group>
 
@@ -224,13 +238,14 @@ export const FetchingDataTest = () => {
               <Form.Control type="file" required onChange={handleImageChange} className="mt-3" multiple />
             </Form.Group>
 
+            <div className="progress mt-2">
+              <div id="progressBar" className="progress-bar" role="progressbar" style={{ width: '0%' }} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" />
+            </div>
+
             <div className="text-center">
               <Button variant="primary" type="submit" onClick={handleSubmit} className="mt-3">
                 Submit
               </Button>
-            </div>
-            <div className="progress">
-              <div id="progressBar" className="progress-bar" role="progressbar" style={{ width: '0%' }} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" />
             </div>
           </Col>
         </Row>

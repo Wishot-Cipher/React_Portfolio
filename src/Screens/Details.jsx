@@ -119,7 +119,14 @@ import ClipLoader from 'react-spinners/ClipLoader';
                 </div>
                 <div class="portfolio-description">
                   <h2>Detail</h2>
-                  <p>{project.body}</p>
+                  <div> 
+                    <b>Introduction:</b>
+                    <p>{project.introBody}</p>
+                  </div>
+                  <div> 
+                    <b>Conclusion:</b>
+                    <p>{project.concludeBody}</p>
+                  </div>
                 </div>
               </div>
             </div>
