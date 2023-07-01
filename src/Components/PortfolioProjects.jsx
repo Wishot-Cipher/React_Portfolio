@@ -21,7 +21,7 @@ export const PortfolioProjects = () => {
 
   const getProjectList = async () => {
     try {
-      const q = query(projectCollectionRef, orderBy('createdAt', 'asc'));
+      const q = query(projectCollectionRef, orderBy('createdAt', 'desc'));
       const querySnapshot = await getDocs(q);
       const data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
       setProject(data);
@@ -69,9 +69,16 @@ export const PortfolioProjects = () => {
     height: 100vh;
   `;
 
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('portfolio');
+    projectsSection.scrollIntoView({ behavior: 'smooth' });
+  };
+  
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    scrollToProjects();
   };
+  
 
   const handleFilterChange = (section) => {
     setActiveSection(section);
