@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { db } from '../config/firebase';
-import { getDocs, collection, doc, query, limit } from 'firebase/firestore';
+import { collection, query, orderBy, startAfter, limit, getDocs } from 'firebase/firestore';
 import { Filter } from './Filter';
 import { Link } from 'react-router-dom';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
@@ -12,28 +12,48 @@ import ClipLoader from 'react-spinners/ClipLoader';
 export const PortfolioProjects = () => {
   const [project, setProject] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [activeSection, setActiveSection] = useState("all");
+  const [activeSection, setActiveSection] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   const projectCollectionRef = collection(db, 'portfolioProjects');
 
   const getProjectList = async () => {
     try {
-      const q = query(projectCollectionRef, limit(10));
-      const data = await getDocs(q);
-      const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-      setProject(filteredData);
-      setFiltered(filteredData);
+      const q = query(projectCollectionRef, orderBy('createdAt', 'asc'));
+      const querySnapshot = await getDocs(q);
+      const data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setProject(data);
       setIsLoading(false);
-      console.log(filteredData);
+      updateFilteredData(data, currentPage, activeSection);
+      setTotalPages(Math.ceil(data.length / 5));
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const updateFilteredData = (data, page, section) => {
+    const start = (page - 1) * 5;
+    const end = start + 5;
+    let filteredData = data;
+    if (section !== 'all') {
+      filteredData = data.filter((post) => post.section === section);
+    }
+    setFiltered(filteredData.slice(start, end));
+    setTotalPages(Math.ceil(filteredData.length / 5));
+    if (currentPage > Math.ceil(filteredData.length / 5)) {
+      setCurrentPage(1);
     }
   };
 
   useEffect(() => {
     getProjectList();
   }, []);
+
+  useEffect(() => {
+    updateFilteredData(project, currentPage, activeSection);
+  }, [currentPage, activeSection]);
 
   const getFirstImage = (images) => {
     if (images && images.length > 0) {
@@ -43,12 +63,20 @@ export const PortfolioProjects = () => {
   };
 
   const override = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  `;
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleFilterChange = (section) => {
+    setActiveSection(section);
+    setCurrentPage(1);
+  };
 
   return (
     <div>
@@ -62,7 +90,12 @@ export const PortfolioProjects = () => {
               a particular project.
             </p>
           </div>
-          <Filter project={project} setFiltered={setFiltered} activeSection={activeSection} setActiveSection={setActiveSection} />
+          <Filter
+            project={project}
+            setFiltered={setFiltered}
+            activeSection={activeSection}
+            setActiveSection={handleFilterChange}
+          />
 
           <motion.div
             layout
@@ -72,7 +105,7 @@ export const PortfolioProjects = () => {
             className="row portfolio-container"
           >
             {isLoading ? (
-                <div
+              <div
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -82,7 +115,6 @@ export const PortfolioProjects = () => {
               >
                 <ClipLoader size={40} color={'#123abc'} loading={true} />
               </div>
-  
             ) : (
               <AnimatePresence>
                 {filtered.map((post) => (
@@ -101,7 +133,9 @@ export const PortfolioProjects = () => {
                         <h4>{post.name}</h4>
                         <p>{post.title}</p>
                         <Link to={`/projects/${post.id}`}>
-                          <i className='linkFont'><FontAwesomeIcon icon={faLink}/></i>
+                          <i className="linkFont">
+                            <FontAwesomeIcon icon={faLink} />
+                          </i>
                         </Link>
                       </div>
                       <div className="portfolio-links">
@@ -118,8 +152,38 @@ export const PortfolioProjects = () => {
               </AnimatePresence>
             )}
           </motion.div>
+          <div className="d-flex justify-content-center mt-4">
+            {totalPages > 1 && (
+              <nav aria-label="Page navigation">
+                <ul className="pagination">
+                  <li className={currentPage === 1 ? 'disabled' : ''}>
+                    <button onClick={() => handlePageChange(currentPage - 1)} className="page-link">
+                      Previous
+                    </button>
+                  </li>
+                  {Array.from(Array(totalPages), (_, index) => (
+                  <li className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                  <button
+                    onClick={() => handlePageChange(index + 1)}
+                    className="page-link"
+                    style={{ backgroundColor: currentPage === index + 1 ? '#F48840' : '' }}
+                  >
+                    {index + 1}
+                  </button>
+                </li>
+ 
+                  ))}
+                  <li className={currentPage === totalPages ? 'disabled' : ''}>
+                    <button onClick={() => handlePageChange(currentPage + 1)} className="page-link">
+                      Next
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            )}
+          </div>
         </div>
       </section>
     </div>
   );
-};
+}

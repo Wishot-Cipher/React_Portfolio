@@ -1,14 +1,12 @@
-
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { db, storage } from '../config/firebase';
-import { getDocs, collection, addDoc } from 'firebase/firestore';
+import { getDocs, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 export const FetchingDataTest = () => {
   const [projectList, setProjectList] = useState([]);
-  // project form state
   const [newProject, setNewProject] = useState({
     title: '',
     introBody: '',
@@ -84,6 +82,7 @@ export const FetchingDataTest = () => {
       const newProjectData = {
         ...newProject,
         images: downloadURLs,
+        createdAt: serverTimestamp(),
       };
 
       await addDoc(projectCollectionRef, newProjectData);
@@ -113,6 +112,10 @@ export const FetchingDataTest = () => {
     setNewProject((prevState) => ({ ...prevState, images: files }));
   };
 
+  useEffect(() => {
+    getProjectList();
+  }, []);
+
   return (
     <div>
       <section className="breadcrumbs">
@@ -121,8 +124,7 @@ export const FetchingDataTest = () => {
             <h2>Portfolio Details</h2>
             <ol>
               <li>
-              <li>
-                <Link to={"/"}> Home </Link></li>
+                <Link to="/">Home</Link>
               </li>
               <li>Portfolio Details</li>
             </ol>
@@ -253,5 +255,3 @@ export const FetchingDataTest = () => {
     </div>
   );
 };
-
-
