@@ -1118,13 +1118,18 @@ section {
   justify-content: center;
 }
 
-.active-page {
-  background-color: #f48840;
-  border: none;
-}
+
 
 .page-link{
-  color: #2C4964;
-  border: 3px ridge #2c4964;
+  /* color: #2C4964; */
+  border: 4px ridge var(--MostUsedcolor);
+  border-radius: 10px;
+  margin-inline: 5px;
+  background-color: var(--MostUsedcolor);
+  color: white;
+  font-weight: 700;
+}
+.page-link:hover{
+  color: #2c4964;
 }
 
