@@ -152,36 +152,34 @@ export const PortfolioProjects = () => {
               </AnimatePresence>
             )}
           </motion.div>
-          <div className="d-flex justify-content-center mt-4">
-            {totalPages > 1 && (
-              <nav aria-label="Page navigation">
-                <ul className="pagination">
-                  <li className={currentPage === 1 ? 'disabled' : ''}>
-                    <button onClick={() => handlePageChange(currentPage - 1)} className="page-link">
-                      Previous
-                    </button>
-                  </li>
-                  {Array.from(Array(totalPages), (_, index) => (
-                  <li className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                  <button
-                    onClick={() => handlePageChange(index + 1)}
-                    className="page-link"
-                    style={{ backgroundColor: currentPage === index + 1 ? '#F48840' : '' }}
-                  >
-                    {index + 1}
-                  </button>
-                </li>
- 
-                  ))}
-                  <li className={currentPage === totalPages ? 'disabled' : ''}>
-                    <button onClick={() => handlePageChange(currentPage + 1)} className="page-link">
-                      Next
-                    </button>
-                  </li>
-                </ul>
-              </nav>
-            )}
-          </div>
+       <div className="d-flex justify-content-center mt-4">
+      {totalPages > 1 && (
+        <nav aria-label="Page navigation">
+          <ul className="pagination">
+            <li className={currentPage === 1 ? 'disabled' : ''}>
+              <button onClick={() => handlePageChange(currentPage - 1)} className="page-link">
+                Previous
+              </button>
+            </li>
+            {Array.from(Array(totalPages), (_, index) => (
+              <li className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} key={index}>
+                <button
+                  onClick={() => handlePageChange(index + 1)}
+                  className={`page-link ${currentPage === index + 1 ? 'active-page' : ''}`}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            ))}
+            <li className={currentPage === totalPages ? 'disabled' : ''}>
+              <button onClick={() => handlePageChange(currentPage + 1)} className="page-link">
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </div>
         </div>
       </section>
     </div>

@@ -1118,12 +1118,13 @@ section {
   justify-content: center;
 }
 
-/* .active {
-  background-color: #F48840;
-  color: #fff;
-} */
+.active-page {
+  background-color: #f48840;
+  border: none;
+}
+
 .page-link{
   color: #2C4964;
-  border: 2px ridge #2c4964;
+  border: 3px ridge #2c4964;
 }
 
