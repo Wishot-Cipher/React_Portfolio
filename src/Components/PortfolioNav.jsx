@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
-import logo1 from '../assets/unnamed.gif';
+import logo1 from '../assets/WishotLogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBarsStaggered} from '@fortawesome/free-solid-svg-icons';
 
@@ -45,7 +45,7 @@ export const PortfolioNav = () => {
           <img src={logo1} height={50} alt='logo' className='LogoImg' /><h2>Wishot</h2>
           </div>
           <ul>
-            <li className='menu'> <div className="logo"><img src={logo1} height={40} alt="logo"/> <h2>Wishot</h2></div> </li>
+            <li className='menu'> <div className="logo logoLi"><img src={logo1} height={40} alt="logo"/> <h2>Wishot</h2></div> </li>
               <ScrollLink
                 // activeClass='activate'
                 onSetActive={() => setActiveLiLink("hero")}
