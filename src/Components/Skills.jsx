@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import React, { useEffect } from "react";
-import html from "../../src/assets/html.jpg"
+import html from "../../src/assets/html.png"
 import cssImg from "../../src/assets/css.png"
 import git from "../../src/assets/gitpng.png"
 import react from "../../src/assets/react2.png"
