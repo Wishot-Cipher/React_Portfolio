@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { auth, googleAuthProvider, db } from "../config/firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import image from "../assets/register.jpg";
 
 export const Register = () => {
   const [email, setEmail] = useState("");

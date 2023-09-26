@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { db } from '../config/firebase';
-import { collection, query, orderBy, startAfter, limit, getDocs } from 'firebase/firestore';
+import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { Filter } from './Filter';
 import { Link } from 'react-router-dom';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
@@ -34,15 +34,15 @@ export const PortfolioProjects = () => {
   };
 
   const updateFilteredData = (data, page, section) => {
-    const start = (page - 1) * 5;
-    const end = start + 5;
+    const start = (page - 1) * 6;
+    const end = start + 6;
     let filteredData = data;
     if (section !== 'all') {
       filteredData = data.filter((post) => post.section === section);
     }
     setFiltered(filteredData.slice(start, end));
-    setTotalPages(Math.ceil(filteredData.length / 5));
-    if (currentPage > Math.ceil(filteredData.length / 5)) {
+    setTotalPages(Math.ceil(filteredData.length / 6));
+    if (currentPage > Math.ceil(filteredData.length / 6)) {
       setCurrentPage(1);
     }
   };

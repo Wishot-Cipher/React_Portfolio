@@ -95,7 +95,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
             <div class="row gy-4">
               <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
-                  <div class="swiper-wrapper align-items-center">
+                  <div class="swiper-wrapper align-items-center sliderBody">
                     <Slider {...settings}>
                       {project.images.map((image, index) => (
                         <div key={index} class="swiper-slide">
@@ -107,15 +107,16 @@ import ClipLoader from 'react-spinners/ClipLoader';
                   <div class="swiper-pagination"></div>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-4 infoBody">
                 <div class="portfolio-info">
                   <h3>Project information</h3>
-                  <ul>
-                    <li><strong>Category</strong>: {project.category}</li>
-                    <li><strong>Client</strong>: {project.client}</li>
-                    <li><strong>Project date</strong>: {project.projectDate}</li>
-                    <li><strong>Project URL</strong>: <a href={project.projectURL}>View {project.name}</a></li>
+                  <ul className=''>
+                    <li className='listContainer'><strong>Category:</strong> <p> {project.category} </p></li>
+                    <li className='listContainer'><strong>Client:</strong> <p>{project.client}</p></li>
+                    <li className='listContainer'><strong>Project date:</strong> <p>{project.projectDate}</p></li>
+                    <li className='listContainer'><strong>Project URL:</strong> <p><a href={project.projectURL}>View {project.name}</a></p></li>
                   </ul>
+              </div>
                 </div>
                 <div class="portfolio-description">
                   <h2>Detail</h2>
@@ -128,7 +129,6 @@ import ClipLoader from 'react-spinners/ClipLoader';
                     <p>{project.concludeBody}</p>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         </section>

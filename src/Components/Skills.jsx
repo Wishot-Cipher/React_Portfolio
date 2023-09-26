@@ -11,26 +11,7 @@ import fastApi from "../../src/assets/fastApi.png"
 
 
 export const Skills = () => {
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const skillsContent = document.querySelector('.skills-content');
-  //     if (skillsContent) {
-  //       const skillsContentOffset = skillsContent.offsetTop - (window.innerHeight * 0.8);
-  //       if (window.pageYOffset > skillsContentOffset) {
-  //         const progressBars = document.querySelectorAll('.progress .progress-bar');
-  //         progressBars.forEach((bar) => {
-  //           const width = bar.getAttribute('aria-valuenow') + '%';
-  //           bar.style.width = width;
-  //         });
-  //       }
-  //     }
-  //   };
 
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
 
   return (
     <section id="skills" className="skills section-bg">

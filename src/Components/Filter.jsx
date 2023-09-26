@@ -2,6 +2,8 @@ import React, {useEffect} from 'react'
 
 
 export const Filter = ({project, setFiltered, activeSection, setActiveSection}) => {
+
+  
    useEffect(() => {
      if (activeSection === "all"){
       setFiltered(project);

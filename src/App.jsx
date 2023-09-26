@@ -7,7 +7,7 @@ import { Login } from './Screens/Login';
 import { Register } from './Screens/Register';
 // import { UserDetails } from './Screens/UserDetails';
 import { Home } from './Screens/Home';
-import { FetchingDataTest } from './Screens/PostProject';
+import { PostProject } from './Screens/PostProject';
 import { Details } from './Screens/Details';
 
 export const App = () => {
@@ -17,7 +17,7 @@ export const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="posts" element={<FetchingDataTest />} />
+        <Route path="posts" element={<PostProject />} />
         <Route path="/Projects/:projectId" element={<Details />} />
       </Routes>
     </>
