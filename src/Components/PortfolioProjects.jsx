@@ -134,7 +134,7 @@ export const PortfolioProjects = () => {
                     transition={{ duration: 0.3 }}
                     className="col-lg-4 col-md-6 portfolio-item filter-app"
                   >
-                    <div className="portfolio-wrap">
+                    <div className="portfolio-wrap projectShadow">
                       <img src={getFirstImage(post.images)} className="img-fluid" alt="" />
                       <div className="portfolio-info">
                         <h4>{post.name}</h4>
