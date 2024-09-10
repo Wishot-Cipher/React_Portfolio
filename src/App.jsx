@@ -11,8 +11,10 @@ import { PostProject } from './Screens/PostProject';
 import { Details } from './Screens/Details';
 
 export const App = () => {
+
   return (
-    <>
+    <div>
+    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
@@ -20,7 +22,7 @@ export const App = () => {
         <Route path="posts" element={<PostProject />} />
         <Route path="/Projects/:projectId" element={<Details />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

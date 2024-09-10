@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,19 +8,23 @@ import { faFacebookF, faGithub, faLinkedin, faTwitter } from '@fortawesome/free-
 
 export const PortfolioContact = () => {
   const form = useRef();
+  const [loading, setLoading] = useState(false); // Loading state
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when form is submitted
 
     emailjs
-      .sendForm('service_ngmj3qa', 'template_047gtf8', form.current, 'HpuZKIZp4jW55MT8K')
+      .sendForm('service_u00b3tn', 'template_047gtf8', form.current, 'HpuZKIZp4jW55MT8K')
       .then((result) => {
         console.log(result.text);
         toast.success('Email sent successfully!', { autoClose: 3000 });
+        setLoading(false); // Set loading to false when submission is complete
       })
       .catch((error) => {
         console.log(error.text);
         toast.error('Failed to send email!', { autoClose: 3000 });
+        setLoading(false); // Set loading to false in case of error
       });
 
     e.target.reset();
@@ -35,7 +39,7 @@ export const PortfolioContact = () => {
             <h2>Contact</h2>
             <p>
               For more information about us or when in need of our services, please do good to send us an email using
-              the form below. Am also open to work be it remotely or non-remotely
+              the form below. Am also open to work be it remotely or non-remotely.
             </p>
           </div>
 
@@ -48,24 +52,16 @@ export const PortfolioContact = () => {
                 </p>
                 <div className="social-links">
                   <a href="https://mobile.twitter.com/wishotstudio" className="twitter">
-                    <i>
-                      <FontAwesomeIcon icon={faTwitter} />
-                    </i>
+                    <i><FontAwesomeIcon icon={faTwitter} /></i>
                   </a>
                   <a href="https://www.facebook.com/wisdom.alom.3" className="facebook">
-                    <i>
-                      <FontAwesomeIcon icon={faFacebookF} />
-                    </i>
+                    <i><FontAwesomeIcon icon={faFacebookF} /></i>
                   </a>
                   <a href="https://github.com/Wishot-Cipher" className="instagram">
-                    <i>
-                      <FontAwesomeIcon icon={faGithub} />
-                    </i>
+                    <i><FontAwesomeIcon icon={faGithub} /></i>
                   </a>
                   <a href="https://www.linkedin.com/in/wisdom-alom-3a2033242" className="linkedin">
-                    <i>
-                      <FontAwesomeIcon icon={faLinkedin} />
-                    </i>
+                    <i><FontAwesomeIcon icon={faLinkedin} /></i>
                   </a>
                 </div>
               </div>
@@ -74,23 +70,17 @@ export const PortfolioContact = () => {
             <div className="col-lg-3 col-md-4">
               <div className="info">
                 <div className="d-flex align-items-center">
-                  <i>
-                    <FontAwesomeIcon icon={faLocationPin} />
-                  </i>
+                  <i><FontAwesomeIcon icon={faLocationPin} /></i>
                   <p>Enugu State<br />Nigeria</p>
                 </div>
 
                 <div className="d-flex align-items-center mt-4">
-                  <i>
-                    <FontAwesomeIcon icon={faEnvelope} />
-                  </i>
+                  <i><FontAwesomeIcon icon={faEnvelope} /></i>
                   <p>wishotstudio@gmail.com</p>
                 </div>
 
                 <div className="d-flex align-items-center mt-4">
-                  <i>
-                    <FontAwesomeIcon icon={faMobilePhone} />
-                  </i>
+                  <i><FontAwesomeIcon icon={faMobilePhone} /></i>
                   <p>+234 8105 444 154</p>
                 </div>
               </div>
@@ -111,7 +101,9 @@ export const PortfolioContact = () => {
                   <textarea className="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                 </div>
                 <div className="text-center">
-                  <button type="submit">Send Message</button>
+                  <button type="submit" disabled={loading}>
+                    {loading ? <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> : 'Send Message'}
+                  </button>
                 </div>
               </form>
             </div>

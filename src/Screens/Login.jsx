@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword, signOut, signInWithPopup } from "firebase/a
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "../assets/login.css"; // Add a custom CSS file for any additional styling
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,11 +29,7 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       // User sign-in successful
@@ -86,10 +83,10 @@ export const Login = () => {
       <section className="breadcrumbs">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-          <Link to={"/register"}><h2>Login </h2>  </Link>
+            <Link to={"/register"}><h2>Login</h2></Link>
             <ol>
-              <li><Link to={"/"}> Home </Link></li>
-              <li> Login </li>
+              <li><Link to={"/"}>Home</Link></li>
+              <li>Login</li>
             </ol>
           </div>
         </div>
@@ -98,36 +95,44 @@ export const Login = () => {
         <Row className="justify-content-md-center">
           <Col lg={6} md={8}>
             <div className="text-center">
-              <h2>Login</h2>
+              <h2 className="login-heading">Welcome Back!</h2>
+              <p className="text-muted mb-4">Login to your account</p>
             </div>
-            <Form onSubmit={handleSubmit}>
-              <Form.Control
-                type="email"
-                className="form-control mt-3"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Form.Control
-                type="password"
-                className="form-control mt-3"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Button type="submit" className="btn btn-primary mt-3">
+            <Form onSubmit={handleSubmit} className="login-form shadow p-4">
+              <Form.Group className="mb-3">
+                <Form.Control
+                  type="email"
+                  className="form-control mt-3"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  type="password"
+                  className="form-control mt-3"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
+              <Button type="submit" className="btn btn-primary btn-block mt-3 w-100">
                 Login
               </Button>
             </Form>
             <div className="text-center mt-3">
-              <Button variant="secondary" onClick={handleLogOut}>
-                {loggedIn ? "Logged In" : "Logged Out"}
+              <Button variant="secondary" className="w-100" onClick={handleLogOut}>
+                {loggedIn ? "Log Out" : "Not Logged In"}
               </Button>
             </div>
             <div className="text-center mt-3">
-              <Button onClick={signInWithGoogle} className="btn btn-primary">
-                Login with Google
+              <Button onClick={signInWithGoogle} className="btn btn-outline-primary w-100">
+                <i className="fab fa-google"></i> Login with Google
               </Button>
+            </div>
+            <div className="text-center mt-3">
+              <Link to="/forgot-password" className="text-muted">Forgot Password?</Link>
             </div>
           </Col>
         </Row>

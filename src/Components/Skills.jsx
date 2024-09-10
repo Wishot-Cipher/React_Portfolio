@@ -6,8 +6,8 @@ import git from "../../src/assets/gitpng.png"
 import react from "../../src/assets/react2.png"
 import tailwind from "../../src/assets/tailwind.png"
 import javascript from "../../src/assets/javascript.png"
-import flask from "../../src/assets/flask.png"
-import fastApi from "../../src/assets/fastApi.png"
+import flask from "../../src/assets/typescript.png"
+import fastApi from "../../src/assets/next.png"
 
 
 export const Skills = () => {
